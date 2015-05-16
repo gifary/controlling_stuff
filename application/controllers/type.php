@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Type extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,14 +21,33 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		 parent::__construct();
-		 $this->load->helper('url');	 
-
+		 $this->load->helper('url');
+		 $this->load->model('type_model');	
+		 $this->load->model('merk_model');	 
 	 }
 	public function index()
 	{
-		$data=array();	
-		$this->load->view('template/common/header');
-		$this->load->view('template/common/merk',$data);
+		$data=array();
+		if($this->type_model->selectAll()->result()!=null){
+			$data['types']=$this->type_model->selectAll()->result();
+		}else{
+			$data['types']=null;
+		}
+		$data['merks']=$this->merk_model->selectAll()->result();
+		$data['action_add']=site_url('type/add');
+		$data['active']=2;
+		$this->load->view('template/common/header',$data);
+		$this->load->view('template/common/type',$data);
+	}
+
+	public function add(){	
+		$data = array();
+		$data['merk_id']=$this->input->post('merk_id');
+		$data['type_name']=$this->input->post('type_name');
+		$this->type_model->add($data);
+
+		redirect(site_url('type'));
+
 	}
 }
 

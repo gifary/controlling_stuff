@@ -29,7 +29,7 @@ class Welcome extends CI_Controller {
 	 	$data['logged']=true;
 
 	 	$data['header_login']=$this->load->view('template/common/header_login');
-	 	$data['action']=site_url('home/index');
+	 	$data['action']=site_url('merk/index');
 	 	$this->load->view('template/login',$data);
 
 	 }

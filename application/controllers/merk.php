@@ -22,19 +22,30 @@ class Merk extends CI_Controller {
 	{
 		 parent::__construct();
 		 $this->load->helper('url');
-		 $this->load->model('merk');	 
+		 $this->load->model('merk_model');	 
 	 }
 	public function index()
 	{
 		$data=array();
-		$data['products']=true;
-		
+		if($this->merk_model->selectAll()->result()!=null){
+			$data['products']=$this->merk_model->selectAll()->result();
+		}else{
+			$data['products']=null;
+		}
+		$data['active']=1;
+		$data['action_add']=site_url('merk/add');
 		$this->load->view('template/common/header',$data);
-		$this->load->view('template/common/merkView',$data);
+		$this->load->view('template/common/merk',$data);
 	}
 
 	public function add(){
+		//$this->load->model('merk');	
 		$merk_name=$this->input->post('merk_name');
+		$data=array();
+		$data['merk_name']=$merk_name;
+		$this->merk_model->add($data);
+		redirect(site_url('merk'));
+
 	}
 }
 

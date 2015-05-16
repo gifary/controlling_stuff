@@ -6,46 +6,48 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Form Penambahan Merk
+                            Form Penambahan Perusahaan
                         </h1>
                         
                     </div>
                 </div>
                 <!-- /.row -->
-                <form action="<?php echo $action_add ?>" method="post" enctype="multipart/form-data" id="form-product">
+                <form action="<?php echo $action_add ?>" method="post" enctype="multipart/form-data" id="form-company">
                     <div class="well">
                     <div class="row">
                         <div class="form-group">
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="Nama Merek" id="input-merk-name" name="merk_name">
+                                <input class="form-control" placeholder="Nama Perusahaan" id="input-company-name" name="company_name">
                             </div>
                             <div class="col-sm-2"> 
                                 <button type="submit" data-toggle="tooltip" title="Tambah" class="btn btn-primary">Tambah</button>
                             </div>
+                            
                         </div>
+                    
                     </div>
                     </div>
                 </form>
-                <form action="#" method="post" enctype="multipart/form-data" id="form-product">
+                <form action="#" method="post" enctype="multipart/form-data" id="form-company">
                   <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                       <thead>
                         <tr>
                           <td class="text-left">No</td>
-                          <td class="text-left">Nama Merk</td>
+                          <td class="text-left">Perusahaan</td>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php if ($products!=null) { ?>
-                        <?php foreach($products as $product) { ?> 
+                        <?php if ($companies!=null) { ?>
+                        <?php foreach($companies as $company) { ?> 
                         <tr>
-                          <td class="text-left"><?php echo $product->MERK_ID; ?></td>
-                          <td class="text-left"><?php echo $product->MERK_NAME; ?></td>
+                          <td class="text-left"><?php echo $company->COMPANY_ID; ?></td>
+                          <td class="text-left"><?php echo $company->COMPANY_NAME; ?></td>
                        </tr>
                         <?php } ?> 
                         <?php } else { ?>
                         <tr>
-                          <td class="text-center" colspan="8">Ga ada Merk</td>
+                          <td class="text-center" colspan="8">Tidak ada Perusahaan</td>
                         </tr>
                         <?php } ?>
                       </tbody>

@@ -11,7 +11,7 @@
 
     <title>SB Admin - Bootstrap Admin Template</title>
 
-    <!-- Bootstrap Core CSS -->
+    <!-- Bootstrap Core CSS -->stylesheet
     <link href="<?php echo base_url('assets/css/bootstrap.min.css')  ?>" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -47,129 +47,77 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
+                
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-power-off"></i> Log Out
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     
+                    <?php if($active==1){ ?>
                     <li class="active">
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i>Add Merk</a>
-                    </li>
+                        <?php } else { ?>
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i>Add Type</a>
+                        <?php } ?>
+                        <a href="<?php echo site_url('merk'); ?>"><i class="fa fa-fw fa-edit"></i>Add Merk</a>
                     </li>
+
+                        <?php if($active==2){ ?>
+                    <li class="active">
+                        <?php } else { ?>
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i>Add Color</a>
+                        <?php } ?>
+                        <a href="<?php echo site_url('type'); ?>"><i class="fa fa-fw fa-edit"></i>Add Type</a>
                     </li>
+
+                    <?php if($active==3){ ?>
+                    <li class="active">
+                        <?php } else { ?>
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i>Add Company</a>
+                        <?php } ?>
+                        <a href="<?php echo site_url('color'); ?>"><i class="fa fa-fw fa-edit"></i>Add Color</a>
                     </li>
+
+                    <?php if($active==4){ ?>
+                    <li class="active">
+                        <?php } else { ?>
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-table"></i>Barang di Gudang</a>
+                        <?php } ?>
+                        <a href="<?php echo site_url('company'); ?>"><i class="fa fa-fw fa-edit"></i>Add Company</a>
                     </li>
+
+                    <?php if($active==5){ ?>
+                    <li class="active">
+                        <?php } else { ?>
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-table"></i>Barang di Toko</a>
+                        <?php } ?>
+                        <a href="<?php echo site_url('product'); ?>"><i class="fa fa-fw fa-edit"></i>Add Item To Warehouese</a>
                     </li>
+
+                    <?php if($active==6){ ?>
+                    <li class="active">
+                        <?php } else { ?>
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i>Hasil Penjualan</a>
+                        <?php } ?>
+                        <a href="<?php echo site_url('warehouse'); ?>"><i class="fa fa-fw fa-table"></i>Barang di Gudang</a>
+                    </li>
+
+                    <?php if($active==7){ ?>
+                    <li class="active">
+                        <?php } else { ?>
+                    <li>
+                        <?php } ?>
+                        <a href="<?php echo site_url('store'); ?>"><i class="fa fa-fw fa-table"></i>Barang di Toko</a>
+                    </li>
+
+                    <?php if($active==8){ ?>
+                    <li class="active">
+                        <?php } else { ?>
+                    <li>
+                        <?php } ?>
+                        <a href="<?php echo site_url('report'); ?>"><i class="fa fa-fw fa-edit"></i>Hasil Penjualan</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>

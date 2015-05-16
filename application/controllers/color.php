@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Color extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,14 +21,29 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		 parent::__construct();
-		 $this->load->helper('url');	 
-
+		 $this->load->helper('url');
+		 $this->load->model('color_model');	 
 	 }
 	public function index()
 	{
-		$data=array();	
-		$this->load->view('template/common/header');
-		$this->load->view('template/common/merk',$data);
+		$data=array();
+		if($this->color_model->selectAll()->result()!=null){
+			$data['colors']=$this->color_model->selectAll()->result();
+		}else{
+			$data['colors']=null;
+		}
+		$data['action_add']=site_url('color/add');
+		$data['active']=3;
+		$this->load->view('template/common/header',$data);
+		$this->load->view('template/common/color',$data);
+	}
+
+	public function add(){	
+		$data = array();
+		$data['color_name']=$this->input->post('color_name');
+		$this->color_model->add($data);
+		redirect(site_url('color'));
+
 	}
 }
 

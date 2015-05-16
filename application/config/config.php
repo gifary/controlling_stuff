@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/controling_stuff/';
+$config['base_url'] = 'http://localhost/controlling_stuff/';
 
 
 /*

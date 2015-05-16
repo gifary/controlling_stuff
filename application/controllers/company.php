@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Company extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,14 +21,29 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		 parent::__construct();
-		 $this->load->helper('url');	 
-
+		 $this->load->helper('url');
+		 $this->load->model('company_model');	 
 	 }
 	public function index()
 	{
-		$data=array();	
-		$this->load->view('template/common/header');
-		$this->load->view('template/common/merk',$data);
+		$data=array();
+		if($this->company_model->selectAll()->result()!=null){
+			$data['companies']=$this->company_model->selectAll()->result();
+		}else{
+			$data['companies']=null;
+		}
+		$data['action_add']=site_url('company/add');
+		$data['active']=4;
+		$this->load->view('template/common/header',$data);
+		$this->load->view('template/common/company',$data);
+	}
+
+	public function add(){	
+		$data = array();
+		$data['company_name']=$this->input->post('company_name');
+		$this->company_model->add($data);
+		redirect(site_url('company'));
+
 	}
 }
 

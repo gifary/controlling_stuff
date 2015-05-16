@@ -1,46 +1,44 @@
 <div id="page-wrapper">
 
             <div class="container-fluid">
-
-                <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Form Penambahan Merk
+                            List Barang yang Ada di Gudang
                         </h1>
                         
                     </div>
                 </div>
-                <!-- /.row -->
-                <form action="<?php echo $action_add ?>" method="post" enctype="multipart/form-data" id="form-product">
-                    <div class="well">
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-sm-6">
-                                <input class="form-control" placeholder="Nama Merek" id="input-merk-name" name="merk_name">
-                            </div>
-                            <div class="col-sm-2"> 
-                                <button type="submit" data-toggle="tooltip" title="Tambah" class="btn btn-primary">Tambah</button>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </form>
+                <!-- Page Heading -->
                 <form action="#" method="post" enctype="multipart/form-data" id="form-product">
                   <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                       <thead>
                         <tr>
-                          <td class="text-left">No</td>
-                          <td class="text-left">Nama Merk</td>
+                          <td class="text-left"><b>No</b></td>
+                          <td class="text-left"><b>Kode Dus</b></td>
+                          <td class="text-left"><b>Imei</b></td>
+                          <td class="text-left"><b>Merk</b></td>
+                          <td class="text-left"><b>Type</b></td>
+                          <td class="text-left"><b>Warna</b></td>
+                          <td class="text-left"><b>Vendor</b></td>
+                          <td class="text-left"><b>Tanggal PO</b></td>
+                          <td class="text-left"><b>Action</b></td>
                         </tr>
                       </thead>
                       <tbody>
                         <?php if ($products!=null) { ?>
                         <?php foreach($products as $product) { ?> 
                         <tr>
-                          <td class="text-left"><?php echo $product->MERK_ID; ?></td>
+                          <td class="text-left"><?php echo $product->PRODUCT_ID; ?></td>
+                          <td class="text-left"><?php echo $product->BOX_CODE; ?></td>
+                          <td class="text-left"><?php echo $product->IMEI; ?></td>
                           <td class="text-left"><?php echo $product->MERK_NAME; ?></td>
+                          <td class="text-left"><?php echo $product->TYPE_NAME; ?></td>
+                          <td class="text-left"><?php echo $product->COLOR_NAME; ?></td>
+                          <td class="text-left"><?php echo $product->COMPANY_NAME; ?></td>
+                          <td class="text-left"><?php echo $product->BOX_CODE; ?></td>
+                          <td class="text-left"><button type="submit" formaction="<?php echo site_url('warehouse/sell/'.$product->PRODUCT_ID.''); ?>" data-toggle="tooltip" title="Tambah" class="btn btn-primary">Jual</button></td>
                        </tr>
                         <?php } ?> 
                         <?php } else { ?>
